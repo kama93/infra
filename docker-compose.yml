@@ -7,7 +7,7 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: skarb123
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
     - /var/lib/postgresql/data:/var/lib/postgresql/data
 
