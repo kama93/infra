@@ -20,5 +20,11 @@ services:
       DB_PASSWORD: ${POSTGRES_PASSWORD}
       MOVIE_API_KEY: ${MOVIE_API_KEY}
 
+  movie_ui:
+    image: kama93/movie:2
+    restart: "always"
+    ports:
+      - 9876:3000
+
 networks:
   internal:
