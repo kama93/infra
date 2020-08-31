@@ -4,13 +4,12 @@ services:
   postgres:
     image: "postgres:latest"
     restart: "always"
-    ports:
-      - "5432:5432"
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
-    - /var/lib/postgresql/data:/var/lib/postgresql/data
+      - /var/lib/postgresql/data:/var/lib/postgresql/data
+    networks:
+      - internal
 
 networks:
   internal:
-  external:
