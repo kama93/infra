@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  postgres:
+    image: "postgres:latest"
+    restart: "always"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: skarb123
+    volumes:
+    - /var/lib/postgresql/data:/var/lib/postgresql/data
+
+networks:
+  internal:
+  external:
