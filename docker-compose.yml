@@ -26,9 +26,9 @@ services:
     image: kama93/movie:5
     restart: "always"
     environment:
-      API_URL: http://infra_movie_service:3005/
+      API_URL: http://infra_movie_service_1:3005/
     ports:
-      - 9876:5000
+      - 80:5000
     networks:
       - internal
 
