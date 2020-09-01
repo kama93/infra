@@ -12,19 +12,25 @@ services:
       - internal
 
   movie_service:
-    image: kama93/movie.service:6
+    image: kama93/movie.service:7
     restart: "always"
     environment:
       DB_HOST: infra_postgres_1
       DB_USER: postgres
       DB_PASSWORD: ${POSTGRES_PASSWORD}
       MOVIE_API_KEY: ${MOVIE_API_KEY}
+    networks:
+      - internal
 
   movie_ui:
-    image: kama93/movie:2
+    image: kama93/movie:5
     restart: "always"
+    environment:
+      API_URL: http://infra_movie_service:3005/
     ports:
-      - 9876:3000
+      - 9876:5000
+    networks:
+      - internal
 
 networks:
   internal:
