@@ -20,6 +20,12 @@ services:
     networks:
       - internal
 
+  about_me:
+    image: kama93/about-me:1
+    restart: "always"
+    networks:
+      - internal
+
   movie_service:
     image: kama93/movie.service:10
     restart: "always"
