@@ -14,7 +14,9 @@ services:
   nginx:
     image: "nginx:latest"
     volumes:
-      - ./ngin-sites/:/etc/nginx/conf.d/
+      - ./nginx-sites/:/etc/nginx/conf.d/
+    ports:
+      - 80:80
 
   movie_service:
     image: kama93/movie.service:7
