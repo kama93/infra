@@ -27,7 +27,7 @@ services:
       - internal
 
   byte_size:
-    image: kama93/byte-size:1
+    image: kama93/byte-size:2
     restart: "always"
     networks:
       - internal
