@@ -17,6 +17,8 @@ services:
       - ./nginx-sites/:/etc/nginx/conf.d/
     ports:
       - 80:80
+    networks:
+      - internal
 
   movie_service:
     image: kama93/movie.service:7
