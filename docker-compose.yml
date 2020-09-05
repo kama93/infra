@@ -34,8 +34,6 @@ services:
   movie_ui:
     image: kama93/movie:9
     restart: "always"
-    environment:
-      API_URL: http://infra_movie_service_1:3005/
     networks:
       - internal
 
