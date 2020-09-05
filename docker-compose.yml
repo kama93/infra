@@ -38,7 +38,7 @@ services:
       - internal
 
   fit_service:
-    image: kama93/fit.service:3
+    image: kama93/fit.service:4
     restart: "always"
     environment:
       DB_HOST: infra_postgres_1
@@ -49,10 +49,8 @@ services:
       - internal
 
   fit_ui:
-    image: kama93/fit:3
+    image: kama93/fit:4
     restart: "always"
-    environment:
-      API_URL: http://infra_fit_service_1:3003/
     networks:
       - internal
 
