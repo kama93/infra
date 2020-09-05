@@ -26,6 +26,12 @@ services:
     networks:
       - internal
 
+  byte_size:
+    image: kama93/byte-size:1
+    restart: "always"
+    networks:
+      - internal
+
   movie_service:
     image: kama93/movie.service:10
     restart: "always"
