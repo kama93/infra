@@ -21,7 +21,7 @@ services:
       - internal
 
   movie_service:
-    image: kama93/movie.service:9
+    image: kama93/movie.service:10
     restart: "always"
     environment:
       DB_HOST: infra_postgres_1
@@ -32,7 +32,7 @@ services:
       - internal
 
   movie_ui:
-    image: kama93/movie:9
+    image: kama93/movie:10
     restart: "always"
     networks:
       - internal
