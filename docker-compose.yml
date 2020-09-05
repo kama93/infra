@@ -11,6 +11,11 @@ services:
     networks:
       - internal
 
+  nginx:
+    image: "nginx:latest"
+    volumes:
+      - ./ngin-sites/:/etc/nginx/conf.d/
+
   movie_service:
     image: kama93/movie.service:7
     restart: "always"
@@ -27,8 +32,6 @@ services:
     restart: "always"
     environment:
       API_URL: http://infra_movie_service_1:3005/
-    ports:
-      - 8001:5000
     networks:
       - internal
 
@@ -48,8 +51,6 @@ services:
     restart: "always"
     environment:
       API_URL: http://infra_fit_service_1:3003/
-    ports:
-      - 8002:5000
     networks:
       - internal
 
