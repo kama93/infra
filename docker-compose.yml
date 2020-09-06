@@ -21,19 +21,25 @@ services:
       - internal
 
   about_me:
-    image: kama93/about-me:1
+    image: kama93/about-me:latest
     restart: "always"
     networks:
       - internal
 
   byte_size:
-    image: kama93/byte-size:3
+    image: kama93/byte-size:latest
+    restart: "always"
+    networks:
+      - internal
+
+  drums:
+    image: kama93/drums:latest
     restart: "always"
     networks:
       - internal
 
   movie_service:
-    image: kama93/movie.service:10
+    image: kama93/movie.service:latest
     restart: "always"
     environment:
       DB_HOST: infra_postgres_1
@@ -44,24 +50,26 @@ services:
       - internal
 
   movie_ui:
-    image: kama93/movie:10
+    image: kama93/movie:latest
     restart: "always"
     networks:
       - internal
 
   fit_service:
-    image: kama93/fit.service:4
+    image: kama93/fit.service:latest
     restart: "always"
     environment:
       DB_HOST: infra_postgres_1
       DB_USER: postgres
       DB_PASSWORD: ${POSTGRES_PASSWORD}
-      API_KEY: ${FIT_API_KEY}
+      FOOD_API_KEY: ${FOOD_API_KEY}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+      WAQI_API_KEY: ${WAQI_API_KEY}
     networks:
       - internal
 
   fit_ui:
-    image: kama93/fit:4
+    image: kama93/fit:latest
     restart: "always"
     networks:
       - internal
