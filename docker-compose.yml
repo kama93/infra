@@ -74,5 +74,22 @@ services:
     networks:
       - internal
 
+  face_service:
+    image: kama93/face.service:latest
+    restart: "always"
+    environment:
+      DB_HOST: infra_postgres_1
+      DB_USER: postgres
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      CLARIFAI_API_KEY: ${CLARIFAI_API_KEY}
+    networks:
+      - internal
+
+  face_ui:
+    image: kama93/face:latest
+    restart: "always"
+    networks:
+      - internal
+
 networks:
   internal:
