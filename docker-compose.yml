@@ -38,6 +38,12 @@ services:
     networks:
       - internal
 
+  robots:
+    image: kama93/robots:latest
+    restart: "always"
+    networks:
+      - internal
+
   movie_service:
     image: kama93/movie.service:latest
     restart: "always"
