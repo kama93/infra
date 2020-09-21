@@ -15,9 +15,10 @@ services:
     image: "nginx:latest"
     volumes:
       - ./nginx-sites/:/etc/nginx/conf.d/
-      - /etc/letsencrypt/live/:/etc/letsencrypt/live/
+      - /etc/letsencrypt/:/etc/letsencrypt/
     ports:
       - 80:80
+      - 443:443
     networks:
       - internal
 
