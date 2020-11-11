@@ -99,7 +99,7 @@ services:
     networks:
       - internal
 
-  robots:
+  navbar:
     image: kama93/navbar:latest
     restart: "always"
     networks:
