@@ -11,6 +11,14 @@ services:
     networks:
       - internal
 
+  mongo:
+    image: "mongo"
+    restart: "always"
+    volumes:
+      - /var/lib/mongo/db:/data/db
+    networks:
+      - internal
+
   nginx:
     image: "nginx:latest"
     volumes:
@@ -101,6 +109,23 @@ services:
 
   navbar:
     image: kama93/navbar:latest
+    restart: "always"
+    networks:
+      - internal
+
+  news_service:
+    image: kama93/news.service:latest
+    restart: "always"
+    environment:
+      MONGO_DB: infra_mongo_1
+      WEATHER_API: ${WEATHER_API}
+      NEWS_KEY: ${NEWS_KEY}
+      ALPHA_VANTAGE_KEY: ${ALPHA_VANTAGE_KEY}
+    networks:
+      - internal
+
+  news_ui:
+    image: kama93/news:latest
     restart: "always"
     networks:
       - internal
