@@ -121,7 +121,6 @@ services:
       WEATHER_KEY: ${WEATHER_KEY}
       NEWS_KEY: ${NEWS_KEY}
       ALPHA_VANTAGE_KEY: ${ALPHA_VANTAGE_KEY}
-      SERVER_NAME: "0.0.0.0"
     networks:
       - internal
 
