@@ -8,127 +8,88 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - /var/lib/postgresql/data:/var/lib/postgresql/data
-    networks:
-      - internal
 
   mongo:
     image: "mongo"
     restart: "always"
     volumes:
       - /var/lib/mongo/db:/data/db
-    networks:
-      - internal
-
-  nginx:
-    image: "nginx:latest"
-    volumes:
-      - ./nginx-sites/:/etc/nginx/conf.d/
-      - /etc/letsencrypt/:/etc/letsencrypt/
-    ports:
-      - 80:80
-      - 443:443
-    networks:
-      - internal
 
   about_me:
     image: kama93/about-me:latest
     restart: "always"
-    networks:
-      - internal
 
   byte_size:
     image: kama93/byte-size:latest
     restart: "always"
-    networks:
-      - internal
 
   drums:
     image: kama93/drums:latest
     restart: "always"
-    networks:
-      - internal
 
   robots:
     image: kama93/robots:latest
     restart: "always"
-    networks:
-      - internal
 
   movie_service:
     image: kama93/movie.service:latest
     restart: "always"
     environment:
-      DB_HOST: infra_postgres_1
+      DB_HOST: kamila_postgres_1
       DB_USER: postgres
       DB_PASSWORD: ${POSTGRES_PASSWORD}
       MOVIE_API_KEY: ${MOVIE_API_KEY}
-    networks:
-      - internal
 
   movie_ui:
     image: kama93/movie:latest
     restart: "always"
-    networks:
-      - internal
 
   fit_service:
     image: kama93/fit.service:latest
     restart: "always"
     environment:
-      DB_HOST: infra_postgres_1
+      DB_HOST: kamila_postgres_1
       DB_USER: postgres
       DB_PASSWORD: ${POSTGRES_PASSWORD}
       FOOD_API_KEY: ${FOOD_API_KEY}
       GOOGLE_API_KEY: ${GOOGLE_API_KEY}
       WAQI_API_KEY: ${WAQI_API_KEY}
-    networks:
-      - internal
 
   fit_ui:
     image: kama93/fit:latest
     restart: "always"
-    networks:
-      - internal
 
   face_service:
     image: kama93/face.service:latest
     restart: "always"
     environment:
-      DB_HOST: infra_postgres_1
+      DB_HOST: kamila_postgres_1
       DB_USER: postgres
       DB_PASSWORD: ${POSTGRES_PASSWORD}
       CLARIFAI_API_KEY: ${CLARIFAI_API_KEY}
-    networks:
-      - internal
 
   face_ui:
     image: kama93/face:latest
     restart: "always"
-    networks:
-      - internal
 
   navbar:
     image: kama93/navbar:latest
     restart: "always"
-    networks:
-      - internal
 
   news_service:
     image: kama93/news.service:latest
     restart: "always"
     environment:
-      MONGO_DB: infra_mongo_1
+      MONGO_DB: kamila_mongo_1
       WEATHER_KEY: ${WEATHER_KEY}
       NEWS_KEY: ${NEWS_KEY}
       ALPHA_VANTAGE_KEY: ${ALPHA_VANTAGE_KEY}
-    networks:
-      - internal
 
   news_ui:
     image: kama93/news:latest
     restart: "always"
-    networks:
-      - internal
 
 networks:
-  internal:
+  default:
+    external:
+      name: controller_default

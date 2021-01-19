@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+      context: ./nginx
+    volumes:
+      - ../nginx-sites/:/etc/nginx/conf.d/
+      - /etc/letsencrypt/:/etc/letsencrypt/
+    ports:
+      - 80:80
+      - 443:443
+
+  jenkins:
+    build:
+      context: ./jenkins
+    volumes:
+      - jenkins_home:/jenkins
+      - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  jenkins_home:
