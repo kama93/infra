@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  master:
+    build:
+      context: ./master
+    volumes:
+      - master_home:/jenkins
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  native_builder:
+    build:
+      context: ./native-builder
+    volumes:
+      - native_builder:/build
+      - native_builder_data:/data
+
+volumes:
+  master_home:
+  native_builder:
+  native_builder_data:
+
+networks:
+  default:
+    external:
+      name: ingress_default

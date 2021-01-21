@@ -92,4 +92,4 @@ services:
 networks:
   default:
     external:
-      name: controller_default
+      name: ingress_default
