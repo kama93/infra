@@ -42,12 +42,17 @@ COPY authorized_keys /build/.ssh
 # initialize ocaml
 RUN opam init --disable-sandboxing -a
 RUN opam switch create 4.10.1
-RUN eval $(opam env) && opam install -y dune core cmdliner menhir
+RUN eval $(opam env) && opam install -y dune core
+RUN eval $(opam env) && opam install -y cmdliner menhir re2
 
 # switch back to root
 USER root
 
 # install third party
-RUN apt -y install libssl-dev libcurl4-openssl-dev pkgconf python git vim
+RUN apt -y install libssl-dev libcurl4-openssl-dev pkgconf git vim
+
+# install python dependencies
+RUN apt -y install python python3-pip python3-dev
+RUN python3 -m pip install pytest
 
 ENTRYPOINT [ "/usr/sbin/sshd", "-D" ]
