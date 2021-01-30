@@ -14,6 +14,13 @@ services:
     volumes:
       - native_builder:/build
       - native_builder_data:/data
+      - /var/lib/apt-repository:/apt
+
+  kama_srv:
+    build:
+      context: ./kama-srv
+      args:
+        apt_password: ${APT_PASSWORD}
 
 volumes:
   master_home:

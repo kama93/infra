@@ -4,9 +4,12 @@ services:
   nginx:
     build:
       context: ./nginx
+      args:
+        apt_password: ${APT_PASSWORD}
     volumes:
       - ../nginx-sites/:/etc/nginx/conf.d/
       - /etc/letsencrypt/:/etc/letsencrypt/
+      - /var/lib/apt-repository/:/var/lib/apt-repository/
     ports:
       - 80:80
       - 443:443

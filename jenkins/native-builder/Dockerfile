@@ -48,6 +48,9 @@ RUN eval $(opam env) && opam install -y cmdliner menhir re2
 # switch back to root
 USER root
 
+# install apt tools
+RUN apt -y install dpkg-dev dpkg-sig apt-utils
+
 # install third party
 RUN apt -y install libssl-dev libcurl4-openssl-dev pkgconf git vim
 
@@ -55,4 +58,5 @@ RUN apt -y install libssl-dev libcurl4-openssl-dev pkgconf git vim
 RUN apt -y install python python3-pip python3-dev
 RUN python3 -m pip install pytest
 
+# wait for jenkins master connections
 ENTRYPOINT [ "/usr/sbin/sshd", "-D" ]
