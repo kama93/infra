@@ -21,11 +21,14 @@ services:
       context: ./kama-srv
       args:
         apt_password: ${APT_PASSWORD}
+    volumes:
+      - kama_srv_app:/opt/eiger
 
 volumes:
   master_home:
   native_builder:
   native_builder_data:
+  kama_srv_app:
 
 networks:
   default:

@@ -46,5 +46,11 @@ RUN apt -y install sudo
 RUN usermod -aG sudo jenkins
 RUN echo "jenkins ALL=(ALL) NOPASSWD: /usr/bin/apt" >> /etc/sudoers.d/jenkins
 
+# install aws dependencies for accessing S3
+RUN apt -y install python3 python3-pip
+RUN python3 -m pip install awscli awscli-plugin-endpoint
+RUN mkdir -p /build/.aws
+COPY aws_config /build/.aws/config
+
 # wait for jenkins master connections
 ENTRYPOINT [ "/usr/sbin/sshd", "-D" ]
