@@ -7,9 +7,12 @@ services:
       args:
         apt_password: ${APT_PASSWORD}
     volumes:
-      - ../nginx-sites/:/etc/nginx/conf.d/
-      - /etc/letsencrypt/:/etc/letsencrypt/
-      - /var/lib/apt-repository/:/var/lib/apt-repository/
+      - ../nginx-sites/:/etc/nginx/conf.d/:ro
+      - /etc/letsencrypt/:/etc/letsencrypt/:ro
+      - apt_repository:/var/lib/apt-repository/:ro
     ports:
       - 80:80
       - 443:443
+
+volumes:
+  apt_repository:

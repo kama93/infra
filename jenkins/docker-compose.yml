@@ -14,7 +14,7 @@ services:
     volumes:
       - native_builder:/build
       - native_builder_data:/data
-      - /var/lib/apt-repository:/apt
+      - ingress_apt_repository:/apt
 
   kama_srv:
     build:
@@ -29,6 +29,8 @@ volumes:
   native_builder:
   native_builder_data:
   kama_srv_app:
+  ingress_apt_repository:
+    external: true
 
 networks:
   default:

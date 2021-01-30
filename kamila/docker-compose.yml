@@ -7,13 +7,13 @@ services:
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
-      - /var/lib/postgresql/data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
 
   mongo:
     image: "mongo"
     restart: "always"
     volumes:
-      - /var/lib/mongo/db:/data/db
+      - mongo_data:/data/db
 
   about_me:
     image: kama93/about-me:latest
@@ -88,6 +88,10 @@ services:
   news_ui:
     image: kama93/news:latest
     restart: "always"
+
+volumes:
+  postgres_data:
+  mongo_data:
 
 networks:
   default:
