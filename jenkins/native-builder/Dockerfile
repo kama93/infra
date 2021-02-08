@@ -52,7 +52,7 @@ USER root
 RUN apt -y install dpkg-dev dpkg-sig apt-utils
 
 # install third party
-RUN apt -y install libssl-dev libcurl4-openssl-dev pkgconf git vim
+RUN apt -y install libssl-dev libcurl4-openssl-dev pkgconf git vim wget libzip-dev
 
 # install python dependencies
 RUN apt -y install python python3-pip python3-dev
