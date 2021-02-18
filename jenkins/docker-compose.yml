@@ -8,31 +8,8 @@ services:
       - master_home:/jenkins
       - /var/run/docker.sock:/var/run/docker.sock
 
-  native_builder:
-    build:
-      context: ./native-builder
-    volumes:
-      - native_builder:/build
-      - native_builder_data:/data
-      - ingress_apt_repository:/apt
-
-  kama_srv:
-    build:
-      context: ./kama-srv
-      args:
-        apt_password: ${APT_PASSWORD}
-    volumes:
-      - kama_srv_app:/opt/eiger
-      - kama_srv_data:/data
-
 volumes:
   master_home:
-  native_builder:
-  native_builder_data:
-  kama_srv_app:
-  kama_srv_data:
-  ingress_apt_repository:
-    external: true
 
 networks:
   default:
