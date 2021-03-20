@@ -10,6 +10,8 @@ services:
   build_cache:
     build:
       context: ./build_cache
+    ports:
+      - "127.0.0.1:9876:8080"
     volumes:
       - build_cache:/cache
 
