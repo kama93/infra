@@ -23,4 +23,8 @@ RUN chmod +x /bin/docker-compose
 RUN apt -y install python3-pip
 RUN pip3 install jinja2 click
 
+# install scaleway cli
+RUN curl -o /usr/local/bin/scw -L "https://github.com/scaleway/scaleway-cli/releases/download/v2.3.0/scw-2.3.0-linux-x86_64"
+RUN chmod +x /usr/local/bin/scw
+
 ENTRYPOINT [ "java", "-jar", "/usr/share/jenkins/jenkins.war" ]
